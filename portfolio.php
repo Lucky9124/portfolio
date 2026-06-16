@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Goodluck Chinedu | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: #f4f6f8;
+        color: #333;
+        line-height: 1.8rem;
+        letter-spacing: 0.7px;
+      }
+
+      .nav_bar {
+        position: sticky;
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1rem;
+        background: #1e293b;
+        height: 90px;
+        z-index: 1;
+      }
+
+      .nav_bar h2,
+      .footer-text {
+        display: flex;
+        flex-flow: column;
+        justify-content: left;
+        color: #fff;
+        font-size: 2.1rem;
+        background: linear-gradient(
+        90deg,
+        #ff512f,
+        #dd2476,
+        #24c6dc,
+        #514a9d
+        );
+        background-size: 300%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientMove 5s ease infinite;
+      }
+
+      @keyframes gradientMove {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .nav_bar p {
+        color: #fff;
+        font-size: 1.2rem;
+        text-align: center;
+        opacity: 1;
+        font-family: Arial, Helvetica,sans-serif;
+      }
+
+      
+
+        /* Hide checkbox */
+      #menu-toggle {
+        display: none;
+      }
+
+      /* Menu button */
+      .menu-btn {
+        font-size: 24px;
+        padding: 10px 15px;
+        color: white;
+        cursor: pointer;
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        z-index: 1100;
+        border: 1px solid white;
+        background: #1e293b;
+        border-radius: 5px;
+        box-shadow: 0 8px 16px rgba(0, 0,0,0.2);
+      }
+
+      /* Overlay */
+      .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s ease;
+      z-index: 1000;
+    }
+
+      /* Active states */
+      .nav_menu.active {
+        right: 0;
+      }
+
+      .overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .dropdown_menu {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        color: #1e293b;
+        right: 0;
+      }
+
+      /* styling the dropdown_menu */
+      .nav_menu {
+        position: fixed;
+        top: 0;
+        right: -260px;
+        width: 260px;
+        height: 100%;
+        background: #1e293b;
+        padding-top: 60px;
+        transition: right 0.4s ease;
+        z-index: 1101;
+      }
+
+      .nav_menu a {
+        padding: 12px 16px;
+        display: block;
+        text-decoration: none;
+        color: white;
+      }
+
+      .nav_menu a:hover {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      @media (min-width: 768px) {
+        .nav_menu{
+          display: flex;
+          flex-flow: center;
+          justify-content: space-between;
+          align-items: center;
+          width: 110vh;
+          height: auto;
+          background: none;
+          position: static;
+          margin-bottom: 50px;
+          overflow-x: hidden;
+        }
+
+        #menu-toggle {
+        display: none;
+      }
+    
+      /* Menu button */
+      .menu-btn{
+        display: none;
+      }
+
+      .dropdown_menu {
+        display: none;
+      }
+
+      .nav_menu a {
+        text-decoration: none;
+        color: white;
+        justify-content: space-between;
+      }
+
+      .nav_menu a:hover {
+        font-size: 16.5px;
+        font-weight: bold;
+        background: linear-gradient(to right, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      }
+
+      /* Styling the submit button */
+      button[type="submit"] {
+        background-color: #f4f6f8;
+        color: #1e293b;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        width: 100%;
+
+      }
+      /* Styling the submit button on hover */
+      button[type="submit"]:hover {
+        background-color: #1e293b;
+        color: #f4f6f8;
+        border: 1px solid #f4f6f8;
+      }
+
+      section {
+        max-width: 1200px;
+        margin: auto;
+        scroll-margin-top: 90px;
+        min-height: auto;
+        padding: 4rem 2rem;
+      }
+
+      .about_span {
+        font-weight: bold;
+        background: linear-gradient(to right, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      #about {
+        line-height: 3rem;
+        font-size: 1.4em;
+      }
+
+      .skill_list {
+        display: flex;
+        gap: 1.3rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 1.3rem;
+      }
+
+      .skills {
+        background: #1e293b;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
+      }
+
+      #projects {
+        display: grid;
+        text-align: center;
+        /* gird-template-columns: repeat(auto-fit, minmax(250px, 1fr));  */
+        gap: 1.5rem;
+      }
+
+      ul {
+        list-style-position: inside;
+        text-align: left;
+        margin: 10px auto;
+      }
+
+      .project_card {
+        background: #fff;
+        padding: 1.5rem;
+        border-radius: 7px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      }
+
+      .project_card:hover {
+        background: linear-gradient(to right, #667eea, #764ba2);
+      }
+
+      #contact a {
+        text-decoration: none;
+        color: #1e293b;
+      }
+
+      .icons {
+        display: flex;
+        margin-top: 10px;
+        margin-bottom: 14px;
+        gap: 6px;
+      }
+
+      .icons a {
+        font-size: 30px;
+        padding: 4px;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        color: #1e293b;
+        z-index: 1;
+        filter: drop-shadow(2px 4px 6px rgba(0,0,0.5,0.3)); 
+      }
+
+      .call-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #000;
+        color: #fff;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 60px;
+        font-size: 24px;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        z-index: 9999;
+      }
+
+      .call-button:hover {
+        background: #f4f6f8;
+      }
+
+      .email-button {
+        position: fixed;
+        bottom: 20px;
+        right: 87px;
+        background: #000;
+        color: #fff;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 60px;
+        font-size: 24px;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        z-index: 9999;
+      }
+
+      .email-button:hover {
+        background: #f4f6f8;
+      }
+
+      /* Hidden state */
+      .reveal {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      /* Visible state */
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 1.2rem 1rem;
+        background: #1e293b;
+        color: #fff;
+      }
+
+      .footer-text {
+          color: #fff;
+          font-size: 1.2rem;
+          background: linear-gradient(
+          90deg,
+          #ff512f,
+          #dd2476,
+          #24c6dc,
+          #514a9d
+          );
+          background-size: 300%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: gradientMove 5s ease infinite;
+        }
+
+        @keyframes gradientMove {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+
+      @media (orientation: landscape) {
+        .nav_menu {
+          height: 100vh;
+          overflow-y: auto;
+        }
+      }  
+
+</style>
+</head>
+
+
+<body>
+<header class="nav_bar">
+<h2>Lucky.C.
+<p>
+Web Developer | PHP Enthusiast
+</p>
+</h2>
+
+<!-- Hidden checkbox -->
+<input type="checkbox" id="menu-toggle">
+
+<!-- Menu button -->
+<label for="menu-toggle" class="menu-btn" id="openMenu">☰</label>
+
+<div class="overlay" id="overlay"></div>
+
+<!-- Sidebar -->
+<div class=" nav_menu" id="nav_content">
+<a href="#about" class="nav-link">About me</a>
+<a href="#experience" class="nav-link">Experience</a>
+<a href="#skills" class="nav-link">Skills</a>
+<a href="#projects" class="nav-link">Projects</a>
+<a href="#goals" class="nav-link">Goals</a>
+<a href="#contact" class="nav-link">Contact</a>
+<!--<a href="auth/login.php" ><button type="submit" class="login_btn">Login</button></a>
+<a href="auth/sign_in.php"><button type="submit" class="sign_in_btn">Sign-in</button></a>-->
+
+</header>
+<section class="reveal" id="about">
+<h2 id="letters">About Me</h2>
+<p>
+<span class="about_span">Hello! My name is Goodluck Chinedu</span>, I am a passionate web developer who enjoys building clean and user-friendly websites.
+I work with HTML, CSS, JavaScript, PHP, and MySQL to create functional web applications.
+</p>
+</section>
+<section class="reveal" id="experience">
+<h2>Experience</h2>
+<p>
+I am a growing developer with hands-on experience from personal projects and continuous practice. Each project I build helps me improve my understanding of web development concepts and best coding practices.
+</p>
+</section>
+<section class="reveal" id="skills">
+<h2>Skills</h2>
+
+<p>
+Here are some of the technologies and tools I work with
+</p>
+<div class="skill_list">
+<span class="skills">HTML – Structuring web pages</span></br>
+
+<span class="reveal skills">CSS – Styling and layout design</span></br>
+
+<span class="reveal skills">JavaScript – Adding interactivity</span></br>
+
+<span class="reveal skills">PHP – Server-side programming</span></br>
+
+<span class="reveal skills">MySQL – Database management</span></br>
+
+<span class="reveal skills">Responsive Design – Mobile-friendly layouts</span></br>
+
+<span class="reveal skills">Basic UI/UX Principles</span>
+</div>
+</section>
+<section class="reveal" id="projects">
+<h2>Projects</h2>
+
+<div class="reveal project_card">
+<h3>1.Login & Registration System</h3>
+
+<p>
+A secure login and registration system built with HTML, CSS, PHP, and MySQL.
+Features include:
+<ul>
+<li>User authentication</li>
+
+<li>Password validation</li>
+
+<li>Database integration</li>
+</ul>
+</p>
+</div>
+
+<div class="reveal project_card">
+<h3>2.Portfolio Website</h3>
+
+<p>
+A personal portfolio website designed to showcase my skills, projects, and contact information.
+Features include:
+<ul>
+<li>Responsive design</li>
+
+<li>Clean user interface</li>
+
+<li>Navigation menu</li>
+</ul>
+</p>
+</div>
+
+<div class="reveal project_card">
+<h3>3.Forgot Password Page</h3>
+
+<p>
+A simple and user-friendly password recovery page.
+Features include:
+<ul>
+<li>Email input validation</li>
+
+<li>Clear user guidance</li>
+
+<li>Minimal design</li>
+</ul>
+<p>
+</div>
+</section>
+<section class="reveal" id="goals">
+<h2>Goals</h2>
+<p>
+My goal is to become a professional Full-Stack Web Developer, create real-world applications, and work on meaningful projects that solve real problems. I am open to learning, collaboration, and new challenges.
+</p>
+</section>
+<section class="reveal" id="contact">
+<h2>Contact</h2>
+<p>
+<a href="mailto: gchinedu094@gmail.com?cc=second@example.com&bcc=third@example.com&subject=Inquiry%20about%20your%20website&body=Hello%2C%0A%0AI%20would%20like%20to%20know%20more%20about%20your%20services." class="email-button">
+✉️
+</a>
+</p>
+<p>
+<a href="tel:+2348034567890" class="call-button">
+📞
+</a>
+</p>
+<p>
+Location: Nigeria
+</p>
+<div class="icons">
+<a href="https://Facebook.com">
+<i class="fa fa-facebook"></i>
+</a>
+<a href="https://Instagram.com">
+<i class="fa fa-instagram"></i>
+</a>
+<a href="https://whatsapp.com">
+<i class="fa fa-whatsapp"></i>
+</a>
+<a href="https://telegram.com">
+<i class="fa fa-telegram"></i>
+</a>
+<a href="https://twitter.com">
+<i class="fa fa-twitter"></i>
+</a>
+</div>
+</section>
+<footer class="footer">
+<div class="footer-text">
+&copy; <?php echo date("Y"); ?> Goodluck Chinedu. All Rights Reserved.
+</div>
+</footer>
+</body>
+
+
+
+
+<script>
+  const nav_content = document.getElementById("nav_content");
+  const overlay = document.getElementById("overlay");
+  const openMenu = document.getElementById("openMenu");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  // Open menu
+  openMenu.addEventListener("click", () => {
+    nav_content.classList.add("active");
+    overlay.classList.add("active");
+  });
+
+  // Close on overlay click
+  overlay.addEventListener("click", () => {
+    nav_content.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+  
+
+// animation
+const revealpage = document.querySelectorAll('.reveal');
+
+const visual = new IntersectionObserver(
+(x) => {
+x.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('active');
+} else {
+entry.target.classList.remove('active');
+}
+});
+},
+{
+threshold: 0.3
+}
+);
+
+revealpage.forEach(reveal => visual.observe(reveal));
+
+</script>
+</html>
